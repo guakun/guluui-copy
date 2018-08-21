@@ -35,7 +35,7 @@ export default {
 .cascader {
   position: relative;
   .trigger {
-    border: 1px solid black;
+    border: 1px solid $border-color;
     height: 32px; width: 308px;
   }
   .popover-wrapper {

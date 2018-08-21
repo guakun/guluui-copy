@@ -1,94 +1,99 @@
 <template>
-  <div class="header-box">
-    <div class="header-content-box g-cf">
-      <ul class="nav-box g-fl g-cf">
-        <li class="nav g-fl">
-          <a href="https://baidu.com" class="logo"><img src="./image/logo.png" alt="It服务台的Logo"></a>
-        </li>
-        <li class="nav proName g-fl">
-          <router-link to="/">资产平台</router-link>
-        </li>
-        <li class="nav g-fl">
-          <router-link to="/about">首页</router-link>
-        </li>
-        <li class="nav g-fl">我要申请</li>
-        <li class="nav g-fl active">任务中心</li>
-        <li class="nav g-fl">资产管理</li>
-        <li class="nav g-fl">管理后台</li>
-      </ul>
-      <div class="order-box g-fl">
-        <router-link to="/">
-          <img src="./image/order-icon.png" alt="订单的logo" class="icon-order">
-          <i class="superscript">3</i>
-          <span>我的申请单</span>
-        </router-link>
+  <header class="g-cf">
+    <div class="content-box">
+      <div class="slogan-box g-fl">
+        <img src="./image/logo.png" alt="">
+        <a href=""><span class="slogan">资产平台</span></a>
       </div>
-      <div class="user-info-box g-fl">瓜坤,欢迎来到资管平台&emsp;|&emsp;退出</div>
+      <ul class="nav-box g-fl">
+        <li class="nav">
+          <router-link to='/'>首页</router-link>
+        </li>
+        <li class="nav">
+          <router-link to='/group'>我要申请</router-link>
+        </li>
+        <li class="nav">
+          <router-link to='/task'>我的任务</router-link>
+        </li>
+        <li class="nav">
+          <router-link to='/asset'>资产管理</router-link>
+        </li>
+        <li class="nav">
+          <router-link to='/admin'>管理后台</router-link>
+        </li>
+      </ul>
+      <div class="user-info-box g-fl">
+        <a href="" class="order-icon"></a>
+        <span class="superscript">3</span>
+        <span class="desc">我的申请单</span>
+        <span class="welcome">
+          瓜坤，欢迎来到资产管理平台&emsp;|&emsp;<a href="">退出</a>
+        </span>
+      </div>
     </div>
-  </div>
+  </header>
 </template>
 
 <script>
 export default {
+
 }
 </script>
 
 <style lang="scss" scoped>
-@import "@style/var.scss";
+@import '@style/var.scss';
 
-.header-box {
-  background: $header-background; height: 60px; text-align: center; min-width: 1160px;
-  .header-content-box {
-    display: inline-block; color: $header-font-color;
-    a {
-      color: $header-font-color;
+header {
+  height: 60px; background: $header-background;
+  display: flex; justify-content: center;
+  min-width: 1160px;
+  .content-box {
+    .slogan-box {
+      height: 100%;
+      img {
+        margin-right: 34px; margin-top: 18px; vertical-align: top;
+      }
+      .slogan {
+        display: inline-block;
+        color: $header-font-color; font-size: $font-size-large;
+        margin-right: 31px; margin-top: 18px; font-weight: 700;
+      }
     }
     .nav-box {
-      margin-right: 103px;
+      height: 100%;
+      margin-right: 94px;
       .nav {
-        display: inline; line-height: 21px; font-size: $font-size-big;
-        padding-top: 20px; padding-left: 9px; padding-right: 9px;
-        &.active {
-          position: relative;
-        }
-        &.active::after {
-          content: "";
-          display: block;
-          position: absolute;
-          left: 5px;
-          bottom: -19px;
-          width: 90%;
-          border-bottom: 3px solid $color-primary;
-        }
-        &.proName {
-          font-size: $font-size-large; line-height: 26px; font-weight: bold;
-          padding-left: 0; padding-right: 0; padding-top: 16px; margin-right: 40px;
-        }
-        .logo {
-          img {
-            margin-top: -2px; margin-right: 34px;
+        display: inline-block; padding-top: 20px; height: 100%;
+        font-size: $font-size-big; padding-left: 9px; padding-right: 9px;
+        a {
+          color: $header-font-color;
+          display: inline-block; height: 100%;
+          &.router-link-exact-active {
+            border-bottom: 4px solid $color-primary;
           }
         }
       }
     }
-    .order-box {
-      padding-top: 20px; position: relative;
-      a, img, span {
-        display: inline-block;
-      }
-      .icon-order {
-        margin-right: 17px; vertical-align: middle;
+    .user-info-box {
+      height: 60px; display: flex; align-items: center;
+      position: relative; font-size: $font-size-small; color: $header-font-color;
+      .order-icon {
+        width: 17px; height: 20px; margin-right: 12px;
+        background-image: url('./image/order-icon.png');
       }
       .superscript {
-        position: absolute; left: 7px; bottom: 10px; background: $red; width: 16px; height: 16px; border-radius: 50%;
-        font-size: $font-size-small; padding: 2px; font-style: normal;
+        position: absolute; background: $color-primary;
+        width: 16px; height: 16px; border-radius: 50%;
+        text-align: center; padding-top: 2px;
+        left: 8px; top: 12px;
       }
-      span {
-        margin-bottom: 4px; margin-right: 50px; vertical-align: middle;
+      .desc { margin-right: 50px; }
+      .welcome {
+        color: $font-color-side;
+        a {
+          color: inherit;
+        }
       }
-    }
-    .user-info-box {
-      margin-top: 22px; line-height: 16px; color: $font-color-side;
     }
   }
 }

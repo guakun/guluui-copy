@@ -80,8 +80,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .content-box {
-  padding-left: 200px;
+  padding: 200px;
 }
 </style>
