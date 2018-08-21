@@ -1,0 +1,25 @@
+$border-color-hover: #666;
+$border-color: #999;
+$border-color-light: lighten($border-color, 20%);
+$border-radius: 4px;
+$box-shadow-color: rgba(0, 0, 0, 0.5);
+$button-active-bg: #eee;
+$button-bg: white;
+$button-height: 32px;
+$color: #333;
+$font-size: 14px;
+$input-height: 32px;
+$red: #F1453D;
+
+.box-shadow {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.17)
+}
+
+$header-background: #282828;
+$header-font-color: #fff;
+$font-size-large: 20px;
+$font-size-big: 16px;
+$font-size-normal: 14px;
+$font-size-small: 12px;
+$font-color-side: #999;
+$color-primary: #f46258;
