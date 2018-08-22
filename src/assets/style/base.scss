@@ -6,17 +6,6 @@ html, body {
 li {
   list-style: none;
 }
-// .clearfix {
-//   display: inline-block;
-//   &::after {
-//     display: block;
-//     content: "";
-//     height: 0;
-//     line-height: 0;
-//     clear: both;
-//     visibility: hidden;
-//   }
-// }
 .g-cf{
 	&:after{
 		content: "";
@@ -31,10 +20,13 @@ li {
 		float: right;
 	}
 }
+.g-title {
+  margin-top: 40px; font-size: $font-size-large; color: $font-color-primary; line-height: 26px;
+}
 
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
   .border-1px {
-    &::after { 
+    &::after {
       -webkit-transform: scaleY(.7);
       transform: scaleY(.7);
     }
@@ -47,6 +39,27 @@ li {
     &::after {
       -webkit-transform: scaleY(.5);
       transform: scaleY(.5);
+    }
+  }
+}
+
+// 覆盖 iview 默认样式
+// Carousel
+.ivu-carousel {
+  .ivu-carousel-dots-inside {
+    bottom: 20px;
+  }
+  .ivu-carousel-dots {
+    li {
+      margin-right: 10px;
+      > button {
+        height: 10px; width: 10px; background: $color-dots-background; border-radius: 50%;
+      }
+    }
+    .ivu-carousel-active {
+      > button {
+        width: 24px; background: $color-primary; border-radius: 53px;
+      }
     }
   }
 }

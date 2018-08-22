@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from './views/Index.vue'
+import Index from './views/Index/Index.vue'
+import Group from './views/Index/Group.vue'
 
 Vue.use(Router)
 
@@ -8,15 +9,29 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index
+      redirect: { name: 'mall' }
+    },
+    {
+      path: '/mall',
+      name: 'mall',
+      redirect: { name: 'mallIndex' },
+      component: () => import('@views/Index/Layout'),
+      children: [
+        {
+          path: '/mall/index',
+          name: 'mallIndex',
+          component: Index
+        },
+        {
+          path: '/mall/group/:id',
+          name: 'mallGroup',
+          component: Group
+        }
+      ]
     },
     {
       path: '/task',
       name: 'task',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/Task.vue')
     },
     {

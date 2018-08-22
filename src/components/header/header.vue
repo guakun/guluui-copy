@@ -7,10 +7,10 @@
       </div>
       <ul class="nav-box g-fl">
         <li class="nav">
-          <router-link to='/'>首页</router-link>
+          <router-link to='/mall/index'>首页</router-link>
         </li>
         <li class="nav">
-          <router-link to='/group'>我要申请</router-link>
+          <router-link :to="{ name: 'mallGroup', params: { id: 10 }}">我要申请</router-link>
         </li>
         <li class="nav">
           <router-link to='/task'>我的任务</router-link>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-
+  name: 'AssetHeader'
 }
 </script>
 

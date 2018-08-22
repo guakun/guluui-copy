@@ -1,6 +1,7 @@
 <template>
-  <div class="content-box">
-    <g-cascader :source='source'></g-cascader>
+  <div class="main-content">
+    <router-view/>
+    <!-- <g-cascader :source='source' :selected='selected'></g-cascader> -->
   </div>
 </template>
 
@@ -8,12 +9,13 @@
 import Cascader from '@components/cascader/cascader'
 
 export default {
-  name: 'GuluDemo',
+  name: 'AssetIndexLayout',
   components: {
     'g-cascader': Cascader
   },
   data () {
     return {
+      selected: [],
       source: [
         {
           name: '浙江',
@@ -81,7 +83,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.content-box {
-  padding: 200px;
-}
 </style>

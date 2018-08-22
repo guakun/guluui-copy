@@ -19,6 +19,9 @@ export default {
     },
     popoverClassName: {
       type: String
+    },
+    selected: {
+      type: Array
     }
   },
   data () {

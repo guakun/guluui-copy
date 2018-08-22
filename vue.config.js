@@ -8,6 +8,7 @@ module.exports = {
         config.resolve.alias
             .set('@style',resolve('src/assets/style'))
             .set('@components',resolve('src/components'))
+            .set('@views',resolve('src/views'))
     },
     css: {
         loaderOptions: {
