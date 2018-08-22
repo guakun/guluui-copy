@@ -3,7 +3,7 @@
   <div class="trigger" @click="popoverVisible = !popoverVisible">
   </div>
   <div class="popover-wrapper" v-if="popoverVisible">
-    <cascader-items :items="source" class="popover" :class="popoverClassName"></cascader-items>
+    <cascader-items :items="source" class="popover" :class="popoverClassName" @update:selected="onUpdateSelected" :selected="selected"></cascader-items>
   </div>
 </div>
 </template>
@@ -21,12 +21,18 @@ export default {
       type: String
     },
     selected: {
-      type: Array
+      type: Array,
+      default: () => { return [] }
     }
   },
   data () {
     return {
       popoverVisible: false
+    }
+  },
+  methods: {
+    onUpdateSelected (newSelected) {
+      this.$emit('update:selected', newSelected)
     }
   }
 }
@@ -36,7 +42,7 @@ export default {
 @import '@style/var.scss';
 
 .cascader {
-  position: relative;
+  position: relative; background: #fff;
   .trigger {
     border: 1px solid $border-color;
     height: 32px; width: 308px;

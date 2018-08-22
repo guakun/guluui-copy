@@ -1,13 +1,17 @@
 <template>
   <div class="cascaderItem">
+    <div>
+      selected: {{ selected && selected[level] && selected[level].name }}
+      level: {{ level }}
+    </div>
     <div class="left">
-      <div class="label" v-for="(item, index) in items" :key="index" @click="leftSelected = item">
+      <div class="label" v-for="(item, index) in items" :key="index" @click="onClickLabel(item)">
         {{item.name}}
         <Icon v-if="item.children" name="right" class="icon"></Icon>
       </div>
     </div>
     <div class="right" v-if="rightItems">
-      <gulu-cascader-items :items="rightItems"></gulu-cascader-items>
+      <gulu-cascader-items :items="rightItems" :selected="selected" :level="level+1"></gulu-cascader-items>
     </div>
   </div>
 </template>
@@ -21,6 +25,16 @@ export default {
   props: {
     items: {
       type: Array
+    },
+    selected: {
+      type: Array,
+      default: () => {
+        return []
+      }
+    },
+    level: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -35,6 +49,17 @@ export default {
       } else {
         return null
       }
+    }
+  },
+  methods: {
+    onClickLabel (item) {
+      // 违反了单向数据流
+      // 子组件修改 props 垃圾！
+      // this.$set(this.selected, this.level, item)
+      // this.selected.push(item)
+      let copy = JSON.parse(JSON.stringify(this.selected)) // 深拷贝
+      copy[this.level] = item
+      this.$emit('update:selected', copy)
     }
   }
 }

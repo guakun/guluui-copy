@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: { name: 'mall' }
+      redirect: { name: 'task' }
     },
     {
       path: '/mall',
