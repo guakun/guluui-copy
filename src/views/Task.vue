@@ -10,10 +10,20 @@
 import Cascader from '@components/cascader/cascader'
 import db from './db'
 
-function ajax(parentId = 0) {
-  return db.filter((item) => item.parent_id == parentId)
+function ajax(parentId = 0, success, fail) {
+  let id = setTimeout(() => {
+    let result = db.filter((item) => item.parent_id == parentId)
+    success(result)
+  }, 3000)
+  return id
 }
-console.log(ajax())
+
+function ajax2 (parentId = 0) {
+  return new Promise((success, fail) => {
+    let result = db.filter((item) => item.parent_id == parentId)
+    success(result)
+  })
+}
 
 export default {
   name: 'AssetTask',
@@ -22,9 +32,17 @@ export default {
   },
   data() {
     return {
-      source: ajax(),
+      source: [],
       selected: []
     }
+  },
+  created () {
+    // ajax(0, (ret) => {
+    //   this.source = ret
+    // })
+    ajax2(0).then((ret) => {
+      this.source = ret
+    })
   }
 }
 </script>
