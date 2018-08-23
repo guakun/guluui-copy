@@ -1,6 +1,7 @@
 <template>
   <div class="main-content">
-    <Cascader :source='source' :selected="selected" @update:selected="selected=$event"></Cascader>
+    <!-- <Cascader :source='source' :selected="selected" @update:selected="selected=$event"></Cascader> -->
+    <Cascader :source='source' :selected.sync="selected"></Cascader>
   </div>
 </template>
 

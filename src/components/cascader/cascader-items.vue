@@ -55,7 +55,6 @@ export default {
       this.$emit('update:selected', copy)
     },
     onUpdateSelected (newSelected) {
-      console.log('newSelected', newSelected)
       this.$emit('update:selected', newSelected)
     }
   }
