@@ -1,9 +1,5 @@
 <template>
   <div class="cascaderItem">
-    <div>
-      selected: {{ selected && selected[level] && selected[level].name }}
-      level: {{ level }}
-    </div>
     <div class="left">
       <div class="label" v-for="(item, index) in items" :key="index" @click="onClickLabel(item)">
         {{item.name}}
@@ -55,6 +51,7 @@ export default {
       // this.selected.push(item)
       let copy = JSON.parse(JSON.stringify(this.selected)) // 深拷贝
       copy[this.level] = item
+      copy.splice(this.level + 1)
       this.$emit('update:selected', copy)
     },
     onUpdateSelected (newSelected) {
