@@ -1,12 +1,16 @@
 <template>
-  <div>我要申请</div>
+  <HoldButton></HoldButton>
 </template>
 
 <script>
+import HoldButton from '@components/hold-button/hold-button'
+
 export default {
   name: 'AssetGroup',
+  components: {
+    HoldButton
+  },
   created () {
-    console.log('路由带的参数', this.$route.params)
   }
 }
 </script>

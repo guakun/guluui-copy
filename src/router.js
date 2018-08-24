@@ -8,6 +8,13 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/login',
+      name: 'login',
+      meta: {
+        title: '登录 - gulu'
+      },
+    },
+    {
       path: '/',
       redirect: { name: 'task' }
     },
