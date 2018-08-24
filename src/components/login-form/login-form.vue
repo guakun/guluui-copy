@@ -1,11 +1,11 @@
 <template>
-  <Form ref="loginForm" :model="form" :rule="rules">
+  <Form ref="loginForm" :model="form" :rule="rules" autocomplete="off">
     <FormItem prop="username">
-      <Input :model="form.userName" placeholder="Please enter username.">
+      <i-input :model="form.userName" placeholder="Please enter username.">
         <span slot="prepend">
           <Icon :size="16" type="person"></Icon>
         </span>
-      </Input>
+      </i-input>
     </FormItem>
     <FormItem prop="password">
       <Input type="password" :model="form.password" placeholder="Please enter password.">
@@ -25,7 +25,7 @@ export default {
   name: 'IndexLoginForm',
   props: {
     userNameRules: {
-      type: Arrar,
+      type: Array,
       default: () => {
         return [
           { required: true, message: 'username can\'t be empty.', trigger: 'blur' }
@@ -33,7 +33,7 @@ export default {
       }
     },
     passwordRules: {
-      type: Arrar,
+      type: Array,
       default: () => {
         return [
           { required: true, message: 'password can\'t be empty.', trigger: 'blur' }

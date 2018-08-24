@@ -1,25 +1,15 @@
 <template>
   <div id="app">
-    <Header />
     <router-view/>
   </div>
 </template>
 
 <script>
-import Header from '@components/header/header'
-
 export default {
-  name: 'Assets-Index',
-  components: {
-    Header
-  }
+  name: 'AssetsIndex'
 }
 </script>
 
 <style lang="scss" scoped>
 @import '@style/var.scss';
-#app {
-  background: $color-background;
-  padding-bottom: 191px;
-}
 </style>

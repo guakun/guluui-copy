@@ -1,0 +1,25 @@
+@import '@style/var.scss';
+
+.login {
+  height: 100vh; background-image: url('https://file.iviewui.com/iview-admin/login_bg.jpg'); background-size: cover; background-position: center;
+  position: relative;
+  .login-con {
+    position: absolute; right: 160px; top: 50%; transform: translateY(-60%);
+    width: 300px;
+    .ivu-card-head {
+      padding: 30px 0;
+      > p {
+        font-size: $font-size-big; font-weight: $font-bold-weight;
+        text-align: center;
+      }
+    }
+    .form-con {
+      padding: 10px 0 0;
+    }
+    .login-tip {
+      font-size: $font-size-small;
+      text-align: center;
+      color: $font-color-primary;
+    }
+  }
+}

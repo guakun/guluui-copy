@@ -1,5 +1,6 @@
 <template>
-  <div class="main-content">
+  <div class="main-content xxx">
+    <g-header />
     <router-view/>
     <!-- <g-cascader :source='source' :selected='selected'></g-cascader> -->
   </div>
@@ -7,10 +8,12 @@
 
 <script>
 import Cascader from '@components/cascader/cascader'
+import Header from '@components/header/header'
 
 export default {
   name: 'AssetIndexLayout',
   components: {
+    'g-header': Header,
     'g-cascader': Cascader
   },
   data () {

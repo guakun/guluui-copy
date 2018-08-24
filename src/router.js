@@ -13,6 +13,7 @@ export default new Router({
       meta: {
         title: '登录 - gulu'
       },
+      component: () => import('@views/login/login.vue')
     },
     {
       path: '/',
