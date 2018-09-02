@@ -8,11 +8,11 @@
       </i-input>
     </FormItem>
     <FormItem prop="password">
-      <Input type="password" :model="form.password" placeholder="Please enter password.">
+      <i-input type="password" :model="form.password" placeholder="Please enter password.">
         <span slot="prepend">
           <Icon :size="14" type="locked"></Icon>
         </span>
-      </Input>
+      </i-input>
     </FormItem>
     <FormItem>
       <Button @click="handleSubmit" type="primary" long>SingIn</Button>
