@@ -24,6 +24,9 @@ export default {
     selected: {
       type: Array,
       default: () => { return [] }
+    },
+    loadData: {
+      type: Function
     }
   },
   data () {
@@ -34,6 +37,13 @@ export default {
   methods: {
     onUpdateSelected (newSelected) {
       this.$emit('update:selected', newSelected)
+      let lastItem = newSelected[newSelected.length - 1]
+      let updateSource = (ret) => {
+        let toUpdate = this.source.filter(item => item.id === lastItem.id)[0]
+        this.$set(toUpdate, 'children', ret)
+      }
+      this.loadData(lastItem, updateSource) // callback: call function other send
+      // 掉回调的时候传一个函数，这个函数理论上应该被调用
     }
   },
   computed: {
