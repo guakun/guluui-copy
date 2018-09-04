@@ -2,7 +2,7 @@
   <div class="main-content">
     <!-- <Cascader :source='source' :selected="selected" @update:selected="selected=$event"></Cascader> -->
     <Cascader
-      :source="source"
+      :source.sync="source"
       :selected.sync="selected"
       :load-data="loadData"
       ></Cascader>

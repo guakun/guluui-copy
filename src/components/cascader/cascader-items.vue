@@ -43,6 +43,9 @@ export default {
       }
     }
   },
+  updated () {
+    this.$forceUpdate()
+  },
   methods: {
     onClickLabel (item) {
       // 违反了单向数据流
