@@ -1,6 +1,7 @@
 <template>
   <div class="main-content">
     <!-- <Cascader :source='source' :selected="selected" @update:selected="selected=$event"></Cascader> -->
+    <animation-tutorial />
     <Cascader
       :source.sync="source"
       :selected.sync="selected"
@@ -12,6 +13,7 @@
 <script>
 /* eslint-disable */
 import Cascader from '@components/cascader/cascader'
+import AnimationTutorial from '@components/animation-tutorial/animation-tutorial'
 import db from './db'
 
 function ajax(parentId = 0, success, fail) {
@@ -34,7 +36,8 @@ function ajax2(parentId = 0) {
 export default {
   name: 'AssetTask',
   components: {
-    Cascader
+    Cascader,
+    AnimationTutorial
   },
   data() {
     return {
