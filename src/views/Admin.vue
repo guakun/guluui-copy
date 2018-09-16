@@ -1,28 +1,28 @@
 <template>
   <div>
     管理后台
-    <Slides
+    <g-slides
     >
       <div class="box">1</div>
       <div class="box">2</div>
       <div class="box">3</div>
-    </Slides>
+    </g-slides>
   </div>
 </template>
 
 <script>
-import Slides from '@components/slides/slides'
+import GSlides from '@components/slides/slides'
 
 export default {
   name: 'PageAdmin',
   components: {
-    Slides
+    GSlides
   }
 }
 </script>
 
 <style lang="scss" scoped>
 .box {
-  width: 100px; height: 100px; background: #ddd; border: 1px solid red;
+  width: 200px; height: 150px; background: #ddd; border: 1px solid red;
 }
 </style>

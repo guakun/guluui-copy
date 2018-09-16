@@ -17,7 +17,7 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: { name: 'task' }
+      redirect: { name: 'admin' }
     },
     {
       path: '/mall',
