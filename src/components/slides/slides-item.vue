@@ -1,6 +1,6 @@
 <template>
   <transition name="slide">
-    <div class="g-slides-item" v-if="visible">
+    <div class="g-slides-item" v-if="visible" :class="{reverse}">
       <slot></slot>
     </div>
   </transition>
@@ -17,7 +17,8 @@ export default {
   },
   data () {
     return {
-      selected: ''
+      selected: undefined,
+      reverse: false
     }
   },
   computed: {
@@ -29,21 +30,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.g-slides-item {
-  // position: absolute; left: 0; top: 0;
-}
-.slide-enter-active, .slide-leave-active {
-  transition: all 1s;
+.g-slides-item {  
 }
 .slide-leave-active {
   position: absolute; left: 0; top: 0;
 }
+.slide-enter-active, .slide-leave-active {
+  transition: all 1s;
+}
 .slide-enter {
   transform: translateX(100%);
-  position: absolute;
+  opacity: 0;
+}
+.slide-enter.reverse {
+  transform: translateX(-100%);
+  opacity: 0;
 }
 .slide-leave-to {
   transform: translateX(-100%);
+  opacity: 0;
 }
-
+.slide-leave-to.reverse {
+  transform: translateX(100%);
+  opacity: 0;
+}
 </style>

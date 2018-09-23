@@ -28,7 +28,7 @@ export default {
   },
   data () {
     return {
-      selected: undefined
+      selected: 'world'
     }
   },
   created () {
