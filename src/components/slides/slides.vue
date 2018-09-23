@@ -1,5 +1,8 @@
 <template>
-  <div class="g-slides">
+  <div class="g-slides"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+  >
     <div class="g-slides-window" ref="window">
       <div class="g-slides-wrapper">
         <slot></slot>
@@ -11,7 +14,6 @@
        :class="{active : selectedIndex === n - 1}"
        @click="select(n-1)"
       >
-        {{ n-1 }}
       </span>
     </div>
   </div>
@@ -32,7 +34,8 @@ export default {
   data () {
     return {
       childrenLength: 0,
-      lastSelectedIndex: undefined
+      lastSelectedIndex: undefined,
+      timerId: undefined
     }
   },
   computed: {
@@ -40,7 +43,7 @@ export default {
       return this.$children.map(vm => vm.name)
     },
     selectedIndex () {
-      return this.names.indexOf(this.selected) || 0
+      return this.names.indexOf(this.getSelected()) || 0
     }
   },
   mounted () {
@@ -55,13 +58,19 @@ export default {
     this.updateChildren()
   },
   methods: {
+    onMouseEnter () {
+      this.pause()
+    },
+    onMouseLeave () {
+      this.playAutomatically()
+    },
     select (index) {
       this.lastSelectedIndex = this.selectedIndex
       this.$emit('update:selected', this.names[index])
     },
     playAutomatically () {
+      if (this.timerId) { return }
       const names = this.names
-      let index = names.indexOf(this.getSelected())
       // setInterval(() => {
       //   if (index === names.length) { index = 0 }
       //   this.$emit('update:selected', names[index + 1])
@@ -69,18 +78,28 @@ export default {
       // }, 3000)
       // 用 setTimeout 模拟 setInterval
       let run = () => {
-        let newIndex = index - 1
-        console.log('new index', index)
+        // 反向
+        // let newIndex = index - 1
+        // index--
+        // if (newIndex === -1) {
+        //   newIndex = names.length - 1
+        //   index = newIndex
+        // }
+        // this.select(newIndex)
+
+        // 正向
+        let index = names.indexOf(this.getSelected())
+        let newIndex = index + 1
+        if (newIndex === names.length) { newIndex = 0 }
         if (newIndex === -1) { newIndex = names.length - 1 }
         this.select(newIndex)
-        index--
-
-        // if (index === names.length) { index = 0 }
-        // this.$emit('update:selected', names[index + 1])
-        // index++
-        setTimeout(run, 3000)
+        this.timerId = setTimeout(run, 1500)
       }
-      // setTimeout(run, 3000)
+      this.timerId = setTimeout(run, 1500)
+    },
+    pause () {
+      window.clearTimeout(this.timerId)
+      this.timerId = undefined
     },
     getSelected () {
       let first = this.$children[0]
@@ -88,7 +107,16 @@ export default {
     },
     updateChildren () {
       this.$children.forEach(vm => {
-        vm.reverse = this.selectedIndex < this.lastSelectedIndex
+        let reverse = this.selectedIndex < this.lastSelectedIndex
+        if (this.timerId) {
+          if (this.lastSelectedIndex === this.$children.length - 1 && this.selectedIndex === 0) {
+            reverse = false
+          }
+          // if (this.lastSelectedIndex === 0 && this.selectedIndex === this.$children.length - 1) {
+          //   reverse = true
+          // }
+        }
+        vm.reverse = reverse
         this.$nextTick(() => {
           vm.selected = this.getSelected()
         })
@@ -100,7 +128,7 @@ export default {
 
 <style lang="scss" scoped>
 .g-slides {
-  border: 1px solid black;
+  position: relative;
   &-window {
     overflow: hidden;
   }
@@ -108,9 +136,36 @@ export default {
     position: relative;
   }
   &-dots {
+    position: absolute;
+    padding: 8px 0; bottom: 0px; left: calc(50% - 39px);
+    // display: flex; justify-content: center; align-items: center;
     > span {
+      // display: inline-flex; width: 20px; height: 20px;
+      // justify-content: center; align-items: center;
+      // border-radius: 50%;
+      // background: #ddd; margin: 0 8px;
+      // font-size: 12px;
+      display: inline-block;
+      opacity:0.3;
+      background:#000000;
+      width:4px;
+      height:4px;
+      border-radius:100%;
+      margin: 0 5px;
+      &:hover {
+        cursor: pointer;
+      }
       &.active {
-        background: red;
+        opacity: 1;
+        background:#e3282d;
+        border-radius:8px;
+        width:10px;
+        height:4px;
+        // background: black;
+        // color: white;
+        &:hover {
+          cursor: default;
+        }
       }
     }
   }
