@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper">
     <g-slides
       :selected.sync="selected"
     >
@@ -28,7 +28,7 @@ export default {
   },
   data () {
     return {
-      selected: 'world'
+      selected: 'hello'
     }
   },
   created () {
@@ -37,7 +37,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wrapper { margin: 40px }
 .box {
-  width: 200px; height: 150px; background: #ddd;
+  height: 350px; background: #ddd;
 }
 </style>

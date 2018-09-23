@@ -30,13 +30,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.g-slides-item {  
-}
 .slide-leave-active {
   position: absolute; left: 0; top: 0;
+  height: 100%; width: 100%;
 }
 .slide-enter-active, .slide-leave-active {
-  transition: all 1s;
+  transition: all .3s;
 }
 .slide-enter {
   transform: translateX(100%);
